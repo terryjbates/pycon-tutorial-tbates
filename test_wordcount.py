@@ -3,9 +3,10 @@ import tempfile
 
 import wordcount_lib
 
+
 def _make_testfile(filename, data):
     "Make a temp file containing the given data; return full path to file."
-    
+
     tempdir = tempfile.mkdtemp(prefix='wordcounttest_')
     testfile = os.path.join(tempdir, filename)
 
@@ -30,16 +31,17 @@ def test_consume_2():
     testfile = _make_testfile('sometext.txt', 'a\nb\ncc\nddd\ne')
     chars, words, lines = wordcount_lib.consume(testfile)
 
-    assert chars == 12                    # includes whitespace in char count
+    assert chars == 12  # includes whitespace in char count
     assert words == 5
     assert lines == 5
-    
+
+
 def test_consume_3():
     # check something tricky: whitespace at beginning & end of line
     testfile = _make_testfile('sometext.txt', ' a b c ')
     chars, words, lines = wordcount_lib.consume(testfile)
 
-    assert chars == 7                     # includes whitespace in char count
+    assert chars == 7  # includes whitespace in char count
     assert words == 3
     assert lines == 1
     
