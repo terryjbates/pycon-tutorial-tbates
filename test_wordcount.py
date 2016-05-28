@@ -55,3 +55,12 @@ def test_consume_4():
     assert words == 5
     assert lines == 1
 
+
+def test_dangeorus():
+    """See if we can cover the missing statements.
+    """
+    try:
+        wordcount_lib.daaaangerous()
+        assert False
+    except ZeroDivisionError as e:
+        assert True, "Throw divide by zero error"
